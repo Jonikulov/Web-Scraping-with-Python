@@ -1,7 +1,8 @@
 import scrapy
 
+
 class ArticleSpider(scrapy.Spider):
-    name="article"
+    name = "article"
     # allowed_domains = ["en.wikipedia.org"]
 
     async def start(self):
@@ -14,7 +15,8 @@ class ArticleSpider(scrapy.Spider):
             yield scrapy.Request(url=url, callback=self.parse)
 
     def parse(self, response):
-        title = response.css("h1 ::text").extract_first()
+        # title = response.css("h1 ::text").get()
+        title = response.xpath("//h1//text()").get()
         print(f"URL is: {response.url}")
         print(f"Title is: {title}")
 
