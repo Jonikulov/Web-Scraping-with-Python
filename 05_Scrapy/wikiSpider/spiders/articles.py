@@ -12,8 +12,7 @@ class ArticleSpider(CrawlSpider):
     ]
     rules: ClassVar[list[Rule]] = [
         Rule(
-            # LinkExtractor(allow=r".*"),
-            LinkExtractor(allow=r"http(s?)\://en.wikipedia.org/.+"),
+            LinkExtractor(allow=r"https?://en\.wikipedia\.org/.+"),
             callback="parse_items",
             follow=True,
         )
@@ -33,5 +32,5 @@ class ArticleSpider(CrawlSpider):
             "title": title,
             "url": response.url,
             "lastUpdated": last_updated,
-            "text": text
+            "text": text,
         }
