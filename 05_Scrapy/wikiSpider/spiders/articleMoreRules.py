@@ -5,19 +5,15 @@ from scrapy.spiders import CrawlSpider, Rule
 
 
 class ArticleSpider(CrawlSpider):
-    name = "articles"
+    name = "articleMoreRules"
     allowed_domains: ClassVar[list[str]] = ["wikipedia.org"]
     start_urls: ClassVar[list[str]] = [
         "https://en.wikipedia.org/wiki/Benevolent_dictator_for_life"
     ]
     rules: ClassVar[list[Rule]] = [
         Rule(
-            LinkExtractor(
-                allow=(
-                    # r"https?://en\.wikipedia\.org/.+",
-                    r"(/wiki/)((?!:).)*$"
-                )
-            ),
+            LinkExtractor(allow=r"^(https?://en\.wikipedia\.org)?(/wiki/)((?!:).)+$"),
+                # r"^(https?://en\.wikipedia\.org)?(/wiki/)[^:]+$"
             callback="parse_items",
             follow=True,
             cb_kwargs={"is_article": True},
