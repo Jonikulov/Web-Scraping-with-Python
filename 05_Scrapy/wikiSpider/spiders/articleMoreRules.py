@@ -13,7 +13,7 @@ class ArticleSpider(CrawlSpider):
     rules: ClassVar[list[Rule]] = [
         Rule(
             LinkExtractor(allow=r"^(https?://en\.wikipedia\.org)?(/wiki/)((?!:).)+$"),
-                # r"^(https?://en\.wikipedia\.org)?(/wiki/)[^:]+$"
+            # r"^(https?://en\.wikipedia\.org)?(/wiki/)[^:]+$"
             callback="parse_items",
             follow=True,
             cb_kwargs={"is_article": True},

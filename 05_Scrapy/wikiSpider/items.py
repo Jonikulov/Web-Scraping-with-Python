@@ -3,11 +3,11 @@
 # See documentation in:
 # https://docs.scrapy.org/en/latest/topics/items.html
 
-from dataclasses import dataclass
+from scrapy import Field, Item
 
 
-@dataclass
-class WikispiderItem:
-    # define the fields for your item here like:
-    # name: str | None = None
-    pass
+class Article(Item):
+    url = Field()
+    title = Field()
+    text = Field()
+    last_updated = Field(serializer=str)
