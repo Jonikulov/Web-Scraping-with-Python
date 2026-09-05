@@ -8,6 +8,7 @@ dependencies = [
     "beautifulsoup4>=4.14.3",
     "jupyterlab>=4.5.7",
     "lxml>=6.1.1",
+    "nltk>=3.10.3",
     "psycopg[binary]>=3.3.4",
     "pypdf>=6.16.2",
     "python-dotenv>=1.2.3",
